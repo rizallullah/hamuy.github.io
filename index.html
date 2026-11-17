@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JERAT - Jaringan Evaluasi Regulasi dan Aturan Tambang</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <nav class="tabs" id="tabs">
+    <button data-hal="menu" class="on">Menu</button>
+    <button data-hal="air">Air</button>
+    <button data-hal="udara">Udara</button>
+    <button data-hal="tanah">Tanah</button>
+    <button data-hal="audit">Audit PT</button>
+  </nav>
+</header>
+
+<div id="scene">
+  <svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice">
+    <polygon fill="#2d7a8c" points="0,300 0,150 160,60 300,170 420,90 560,190 700,110 860,180 1000,80 1200,170 1200,300"/>
+    <polygon fill="#e9eef5" opacity=".85" points="160,60 120,105 160,95 200,110"/>
+    <polygon fill="#e9eef5" opacity=".85" points="1000,80 960,125 1000,115 1040,130"/>
+    <polygon fill="#2e9a6b" points="0,300 0,230 200,190 420,240 640,200 900,245 1200,205 1200,300"/>
+    <polygon fill="#1f7550" points="0,300 0,270 300,245 600,275 900,250 1200,272 1200,300"/>
+    <g fill="#7dbb5a">
+      <polygon points="90,235 70,275 110,275"/>
+      <polygon points="130,225 110,270 150,270"/>
+      <polygon points="980,230 960,272 1000,272"/>
+      <polygon points="1040,238 1020,276 1060,276"/>
+    </g>
+    <g fill="#e8963a">
+      <polygon points="560,250 600,222 640,250"/>
+      <rect x="570" y="250" width="60" height="26" fill="#b5651d"/>
+    </g>
+  </svg>
+</div>
+
+<main>
+
+  <!-- ===== MENU ===== -->
+  <section id="menu" class="hal tampil">
+    <h1 class="judul">JERAT</h1>
+    <p class="sub besar">Jaringan Evaluasi Regulasi dan Aturan Tambang</p>
+    <p class="sub">Pilih jenis tambang dulu, lalu pilih bagian yang mau dicek.</p>
+
+    <div class="panel kecil">
+      <label for="tambang">Jenis tambang yang diuji</label>
+      <select id="tambang">
+        <option value="1">Nikel</option>
+        <option value="2">Batu Bara</option>
+      </select>
+    </div>
+
+    <div class="hub">
+      <div class="hc"><h3>Kualitas Air</h3><p>Pengamatan awal dan IKA (indeks kelayakan air)</p><button class="btn" data-hal="air">Mulai</button></div>
+      <div class="hc"><h3>Kualitas Udara</h3><p>Klasifikasi ISPU dari 7 parameter</p><button class="btn" data-hal="udara">Mulai</button></div>
+      <div class="hc"><h3>Pencemaran Tanah</h3><p>Indeks Nemerow (Pn)</p><button class="btn" data-hal="tanah">Mulai</button></div>
+      <div class="hc"><h3>Audit Perusahaan</h3><p>Akumulasi denda dan pidana penjara</p><button class="btn" data-hal="audit">Mulai</button></div>
+    </div>
+  </section>
+
+  <!-- ===== AIR ===== -->
+  <section id="air" class="hal">
+    <h2>Pengecekan Kualitas Air</h2>
+    <p class="sub">Jenis tambang: <b class="nama-tambang">Nikel</b></p>
+
+    <div class="panel">
+      <h3>Pengamatan awal</h3>
+      <div class="baris">
+        <label>Apakah air terlihat keruh?</label>
+        <select id="keruh"><option value="tidak">Tidak</option><option value="ya">Ya</option></select>
+      </div>
+      <div class="baris">
+        <label>Apakah air berwarna?</label>
+        <select id="warna"><option value="tidak">Tidak</option><option value="ya">Ya</option></select>
+      </div>
+      <div class="baris">
+        <label>Apakah air berbau?</label>
+        <select id="bau"><option value="tidak">Tidak</option><option value="ya">Ya</option></select>
+      </div>
+      <div class="baris">
+        <label>Mau observasi lebih lanjut?</label>
+        <select id="lanjut"><option value="tidak">Tidak</option><option value="ya">Ya</option></select>
+      </div>
+    </div>
+
+    <div class="panel" id="air-lanjut" style="display:none">
+      <h3>Observasi lebih lanjut</h3>
+      <div class="baris"><label>Jarak sumber air ke area tambang (km)</label><input class="num" type="number" step="any" id="jarak"></div>
+      <div class="baris"><label>Jumlah air yang diobservasi (liter)</label><input class="num" type="number" step="any" id="jumlah_air"></div>
+      <div class="baris"><label>Nilai pH</label><input class="num" type="number" step="any" id="ph"></div>
+      <div class="baris"><label>NTU</label><input class="num" type="number" step="any" id="ntu"></div>
+      <div class="baris"><label>TCU (harus &gt; 0)</label><input class="num" type="number" step="any" id="tcu"></div>
+      <h3>Massa zat terlarut (mg)</h3>
+      <div class="baris"><label id="zat0">-</label><input class="num" type="number" step="any" id="massa0"></div>
+      <div class="baris"><label id="zat1">-</label><input class="num" type="number" step="any" id="massa1"></div>
+      <div class="baris"><label id="zat2">-</label><input class="num" type="number" step="any" id="massa2"></div>
+      <div class="baris"><label id="zat3">-</label><input class="num" type="number" step="any" id="massa3"></div>
+    </div>
+
+    <div class="err" id="air-err"></div>
+    <div class="btns"><button class="btn" id="air-hitung">Cek kualitas air</button></div>
+    <div id="air-hasil"></div>
+  </section>
+
+  <!-- ===== UDARA ===== -->
+  <section id="udara" class="hal">
+    <h2>Klasifikasi Kategori ISPU</h2>
+    <p class="sub">Isi konsentrasi tiap parameter dalam satuan mikrogram per meter kubik (&micro;g/m&sup3;).</p>
+
+    <div class="panel">
+      <div class="baris"><label>PM10</label><input class="num" type="number" step="any" id="pm10"></div>
+      <div class="baris"><label>PM2.5</label><input class="num" type="number" step="any" id="pm25"></div>
+      <div class="baris"><label>SO2</label><input class="num" type="number" step="any" id="so2"></div>
+      <div class="baris"><label>CO</label><input class="num" type="number" step="any" id="co"></div>
+      <div class="baris"><label>O3</label><input class="num" type="number" step="any" id="o3"></div>
+      <div class="baris"><label>NO2</label><input class="num" type="number" step="any" id="no2"></div>
+      <div class="baris"><label>HC</label><input class="num" type="number" step="any" id="hc"></div>
+    </div>
+
+    <div class="err" id="udara-err"></div>
+    <div class="btns"><button class="btn" id="udara-hitung">Hitung ISPU</button></div>
+    <div id="udara-hasil"></div>
+  </section>
+
+  <!-- ===== TANAH ===== -->
+  <section id="tanah" class="hal">
+    <h2>Klasifikasi Pencemaran Tanah</h2>
+    <p class="sub">Indeks Nemerow (Pn). Jenis tambang: <b class="nama-tambang">Nikel</b></p>
+
+    <div class="panel">
+      <div class="baris"><label>pH tanah</label><input class="num" type="number" step="any" id="pht"></div>
+      <div class="baris"><label>Daya Hantar Listrik (dS/m)</label><input class="num" type="number" step="any" id="ec"></div>
+      <div class="baris"><label>C-Organik dalam 1 kg tanah (%)</label><input class="num" type="number" step="any" id="corg"></div>
+      <div class="baris"><label>Kapasitas Tukar Kation (cmol/kg)</label><input class="num" type="number" step="any" id="ktk"></div>
+      <div class="baris"><label>Logam berat Pb (g/kg)</label><input class="num" type="number" step="any" id="klb"></div>
+    </div>
+
+    <div class="panel" id="tanah-nikel">
+      <div class="baris"><label>Logam berat Ni (g/kg)</label><input class="num" type="number" step="any" id="klbni"></div>
+      <div class="baris"><label>Logam berat Co (g/kg)</label><input class="num" type="number" step="any" id="klbco"></div>
+      <div class="baris"><label>Logam berat Cr6+ (g/kg)</label><input class="num" type="number" step="any" id="klbcr6"></div>
+    </div>
+
+    <div class="panel" id="tanah-batubara" style="display:none">
+      <div class="baris"><label>Logam berat Fe (g/kg)</label><input class="num" type="number" step="any" id="klbf"></div>
+      <div class="baris"><label>Logam berat Mn (g/kg)</label><input class="num" type="number" step="any" id="klbm"></div>
+      <div class="baris"><label>Logam berat SO4 (g/kg)</label><input class="num" type="number" step="any" id="klbso4"></div>
+    </div>
+
+    <div class="err" id="tanah-err"></div>
+    <div class="btns"><button class="btn" id="tanah-hitung">Hitung indeks tanah</button></div>
+    <div id="tanah-hasil"></div>
+  </section>
+
+  <!-- ===== AUDIT ===== -->
+  <section id="audit" class="hal">
+    <h2>Audit Perusahaan</h2>
+
+    <div class="panel">
+      <div class="baris">
+        <label>Apakah PT memiliki izin usaha pertambangan?</label>
+        <select id="izin"><option value="ya">Ya</option><option value="tidak">Tidak</option></select>
+      </div>
+      <div class="baris"><label>Berapa hektare kawasan hutan yang dipakai?</label><input class="num" type="number" id="hektare" value="0"></div>
+      <div class="baris"><label>Berapa korban kecelakaan kerja di wilayah tambang?</label><input class="num" type="number" id="korban" value="0"></div>
+      <div class="baris">
+        <label>Adakah limbah yang dikelola tanpa izin?</label>
+        <select id="limbah"><option value="tidak">Tidak</option><option value="ya">Ya</option></select>
+      </div>
+      <div class="baris">
+        <label>Adakah praktik suap dan laporan keuangan fiktif?</label>
+        <select id="suap"><option value="tidak">Tidak</option><option value="ya">Ya</option></select>
+      </div>
+    </div>
+
+    <div class="err" id="audit-err"></div>
+    <div class="btns"><button class="btn" id="audit-hitung">Hitung sanksi</button></div>
+    <div id="audit-hasil"></div>
+  </section>
+
+</main>
+
+<script src="js/data.js"></script>
+<script src="js/air.js"></script>
+<script src="js/udara.js"></script>
+<script src="js/tanah.js"></script>
+<script src="js/audit.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
