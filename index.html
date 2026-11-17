@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JERAT - Jaringan Evaluasi Regulasi dan Aturan Tambang</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div id="bar"><i id="isi_bar"></i></div>
+  <nav class="tabs" id="tabs"></nav>
+</header>
+
+<div id="scene">
+  <svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice">
+    <polygon id="gunung" fill="#2d7a8c" points="0,300 0,150 160,60 300,170 420,90 560,190 700,110 860,180 1000,80 1200,170 1200,300"/>
+    <polygon fill="#e9eef5" opacity=".85" points="160,60 120,105 160,95 200,110"/>
+    <polygon fill="#e9eef5" opacity=".85" points="1000,80 960,125 1000,115 1040,130"/>
+    <polygon fill="#2e9a6b" points="0,300 0,230 200,190 420,240 640,200 900,245 1200,205 1200,300"/>
+    <polygon fill="#1f7550" points="0,300 0,270 300,245 600,275 900,250 1200,272 1200,300"/>
+    <g fill="#7dbb5a">
+      <polygon points="90,235 70,275 110,275"/>
+      <polygon points="130,225 110,270 150,270"/>
+      <polygon points="980,230 960,272 1000,272"/>
+      <polygon points="1040,238 1020,276 1060,276"/>
+    </g>
+    <g fill="#e8963a">
+      <polygon points="560,250 600,222 640,250"/>
+      <rect x="570" y="250" width="60" height="26" fill="#b5651d"/>
+    </g>
+  </svg>
+</div>
+
+<main id="app"></main>
+
+<script src="js/data.js"></script>
+<script src="js/air.js"></script>
+<script src="js/udara.js"></script>
+<script src="js/tanah.js"></script>
+<script src="js/audit.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
